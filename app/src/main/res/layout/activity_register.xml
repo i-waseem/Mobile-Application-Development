@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/dark_maroon"
+    android:gravity="center_horizontal"
+    android:padding="16dp">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_maroon"
+        android:elevation="4dp"
+        android:title="Register"
+        android:titleTextColor="@android:color/white"
+        app:popupTheme="@style/ToolbarTheme"
+        android:theme="@style/ToolbarTheme" />
+
+
+    <!-- Content Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|center_vertical">
+
+        <!-- Username Input -->
+        <EditText
+            android:id="@+id/usernameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Username"
+            android:textColorHint="#60FFFFFF"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Password Input -->
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Password"
+            android:textColorHint="#60FFFFFF"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp"
+            android:inputType="textPassword" />
+
+        <!-- Radio Group -->
+        <RadioGroup
+            android:id="@+id/roleRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp">
+
+            <RadioButton
+                android:id="@+id/adminRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin"
+                android:layout_marginEnd="16dp"
+                app:buttonTint="@android:color/white"
+                android:textColor="@color/radio_button_text_color" />
+
+            <RadioButton
+                android:id="@+id/userRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User"
+                app:buttonTint="@android:color/white"
+                android:textColor="@color/radio_button_text_color" />
+        </RadioGroup>
+        <!-- Register Button -->
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="REGISTER"
+            android:background="@drawable/button_transparent_with_border"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:elevation="6dp" />
+    </LinearLayout>
+</LinearLayout>

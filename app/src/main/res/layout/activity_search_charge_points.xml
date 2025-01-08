@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/dark_maroon">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_maroon"
+        android:elevation="4dp"
+        android:title="Search Charge Points"
+        android:titleTextColor="@android:color/white"
+        android:theme="@style/ToolbarTheme"
+        app:popupTheme="@style/ToolbarTheme" />
+
+
+    <!-- Search Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <!-- Query Input -->
+        <EditText
+            android:id="@+id/searchQueryInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search by town or reference ID"
+            android:textColorHint="#60FFFFFF"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Search Button -->
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SEARCH"
+            android:background="@drawable/button_transparent_with_border"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:elevation="6dp"
+            android:layout_marginBottom="12dp" />
+    </LinearLayout>
+
+    <!-- ListView for Search Results -->
+    <ListView
+        android:id="@+id/searchResultsListView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="12dp"
+        android:background="#30FFFFFF" />
+
+    <!-- Map Fragment -->
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

@@ -1,0 +1,171 @@
+package com.example.chargepointsmvc.controller;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.example.chargepointsmvc.R;
+import com.example.chargepointsmvc.model.DBHelper;
+
+import java.util.ArrayList;
+
+public class SelectChargePointActivity extends AppCompatActivity {
+    private ListView chargePointsListView;
+    private ArrayList<String[]> chargePointDetails;
+    private DBHelper dbHelper;
+    private String action;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_select_charge_point);
+
+        // Set up Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Select a Charge Point");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        // Retrieve action from intent
+        action = getIntent().getStringExtra("action");
+
+        // Initialize components
+        chargePointsListView = findViewById(R.id.chargePointsListView);
+        chargePointDetails = new ArrayList<>();
+        dbHelper = new DBHelper(this);
+
+        // Fetch charge points from the database
+        Cursor cursor = dbHelper.getAllChargePoints();
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                String referenceId = cursor.getString(cursor.getColumnIndex("referenceID"));
+                String latitude = cursor.getString(cursor.getColumnIndex("latitude"));
+                String longitude = cursor.getString(cursor.getColumnIndex("longitude"));
+                String town = cursor.getString(cursor.getColumnIndex("town"));
+                String county = cursor.getString(cursor.getColumnIndex("county"));
+                String postcode = cursor.getString(cursor.getColumnIndex("postcode"));
+                String status = cursor.getString(cursor.getColumnIndex("chargeDeviceStatus"));
+
+                chargePointDetails.add(new String[]{referenceId, latitude, longitude, town, county, postcode, status});
+            }
+            cursor.close();
+        }
+
+        if (chargePointDetails.isEmpty()) {
+            Toast.makeText(this, "No charge points available", Toast.LENGTH_SHORT).show();
+        }
+
+        // Set custom adapter to the ListView
+        AdminChargePointAdapter adapter = new AdminChargePointAdapter(chargePointDetails);
+        chargePointsListView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_logout, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        } else if (item.getItemId() == R.id.logout) {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private class AdminChargePointAdapter extends ArrayAdapter<String[]> {
+        public AdminChargePointAdapter(ArrayList<String[]> chargePointDetails) {
+            super(SelectChargePointActivity.this, R.layout.list_item_admin_charge_point, chargePointDetails);
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            if (convertView == null) {
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                // Use different layouts based on the action
+                if ("edit".equals(action)) {
+                    convertView = inflater.inflate(R.layout.list_item_edit_charge_point, parent, false);
+                } else if ("delete".equals(action)) {
+                    convertView = inflater.inflate(R.layout.list_item_admin_charge_point, parent, false);
+                }
+            }
+
+            TextView referenceId = convertView.findViewById(R.id.referenceId);
+            TextView town = convertView.findViewById(R.id.town);
+
+            String[] chargePoint = getItem(position);
+            if (chargePoint != null) {
+                referenceId.setText("Ref: " + chargePoint[0]);
+                town.setText("Town: " + chargePoint[3]);
+
+                // Handle action-specific logic
+                if ("edit".equals(action)) {
+                    convertView.setOnClickListener(v -> {
+                        Intent intent = new Intent(SelectChargePointActivity.this, EditChargePointActivity.class);
+                        intent.putExtra("referenceId", chargePoint[0]);
+                        intent.putExtra("latitude", chargePoint[1]);
+                        intent.putExtra("longitude", chargePoint[2]);
+                        intent.putExtra("town", chargePoint[3]);
+                        intent.putExtra("county", chargePoint[4]);
+                        intent.putExtra("postcode", chargePoint[5]);
+                        intent.putExtra("status", chargePoint[6]);
+                        startActivity(intent);
+                    });
+                } else if ("delete".equals(action)) {
+                    Button deleteButton = convertView.findViewById(R.id.deleteButton);
+                    deleteButton.setOnClickListener(v -> {
+                        View dialogView = LayoutInflater.from(SelectChargePointActivity.this).inflate(R.layout.dialog_confirm_deletion, null);
+                        AlertDialog dialog = new AlertDialog.Builder(SelectChargePointActivity.this)
+                                .setView(dialogView)
+                                .setCancelable(false)
+                                .create();
+
+                        dialogView.findViewById(R.id.noButton).setOnClickListener(view -> dialog.dismiss());
+                        dialogView.findViewById(R.id.yesButton).setOnClickListener(view -> {
+                            boolean deleted = dbHelper.deleteChargePoint(chargePoint[0]);
+                            if (deleted) {
+                                chargePointDetails.remove(position);
+                                notifyDataSetChanged();
+                                Toast.makeText(SelectChargePointActivity.this, "Charge point deleted successfully", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(SelectChargePointActivity.this, "Failed to delete charge point", Toast.LENGTH_SHORT).show();
+                            }
+                            dialog.dismiss();
+                        });
+
+                        dialog.show();
+                    });
+                }
+            }
+
+            return convertView;
+        }
+    }
+}

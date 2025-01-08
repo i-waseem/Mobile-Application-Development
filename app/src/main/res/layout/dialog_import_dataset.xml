@@ -1,0 +1,72 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/dark_maroon"
+    android:gravity="center">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Import Dataset"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Message -->
+    <TextView
+        android:id="@+id/dialogMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose a file type to import:"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Buttons Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- CSV Button -->
+        <Button
+            android:id="@+id/dialogCsvButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="CSV File"
+            android:background="@drawable/button_transparent_with_border"
+            android:textColor="@android:color/white"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Text Button -->
+        <Button
+            android:id="@+id/dialogTextButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Text File"
+            android:background="@drawable/button_transparent_with_border"
+            android:textColor="@android:color/white"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- JSON Button -->
+        <Button
+            android:id="@+id/dialogJsonButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="JSON File"
+            android:background="@drawable/button_transparent_with_border"
+            android:textColor="@android:color/white"
+            android:padding="8dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

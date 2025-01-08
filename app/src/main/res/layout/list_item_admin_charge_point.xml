@@ -1,0 +1,38 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="?attr/selectableItemBackground"
+    android:gravity="center_vertical">
+
+    <!-- Reference ID -->
+    <TextView
+        android:id="@+id/referenceId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Ref: Example"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <!-- Town -->
+    <TextView
+        android:id="@+id/town"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Town: Example"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <!-- Delete Button -->
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:background="@drawable/button_transparent_with_border"
+        android:textColor="@color/white" />
+</LinearLayout>

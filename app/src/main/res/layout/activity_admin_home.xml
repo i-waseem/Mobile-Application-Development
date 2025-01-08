@@ -1,0 +1,122 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_maroon"
+        android:elevation="4dp"
+        android:title="Login"
+        android:titleTextColor="@android:color/white"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:theme="@style/ToolbarTheme"
+        app:popupTheme="@style/ToolbarTheme" />
+
+    <!-- Content Wrapper -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|center">
+
+        <!-- Buttons -->
+        <Button
+            android:id="@+id/addChargePointButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Charge Point"
+            android:layout_marginTop="12dp"
+            style="@style/ButtonStyle"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:elevation="6dp"
+            android:textSize="15sp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/editChargePointButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Charge Point"
+            android:layout_marginTop="12dp"
+            style="@style/ButtonStyle"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:elevation="6dp"
+            android:textSize="15sp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/deleteChargePointButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Charge Point"
+            android:layout_marginTop="12dp"
+            style="@style/ButtonStyle"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:elevation="6dp"
+            android:textSize="15sp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/viewChargePointsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Charge Points"
+            android:layout_marginTop="12dp"
+            style="@style/ButtonStyle"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:elevation="6dp"
+            android:textSize="15sp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/searchChargePointsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search Charge Points"
+            android:layout_marginTop="12dp"
+            style="@style/ButtonStyle"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:elevation="6dp"
+            android:textSize="15sp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/viewMapButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Map"
+            android:layout_marginTop="12dp"
+            style="@style/ButtonStyle"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:elevation="6dp"
+            android:textSize="15sp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/importDatasetButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Import Dataset"
+            android:layout_marginTop="12dp"
+            style="@style/ButtonStyle"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:elevation="6dp"
+            android:textSize="15sp"
+            android:gravity="center" />
+
+    </LinearLayout>
+</LinearLayout>

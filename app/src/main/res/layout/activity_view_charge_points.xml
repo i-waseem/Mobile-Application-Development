@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/dark_maroon"
+    android:padding="16dp">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_maroon"
+        android:elevation="4dp"
+        android:title="Search Charge Points"
+        android:titleTextColor="@android:color/white"
+        android:theme="@style/ToolbarTheme"
+        app:popupTheme="@style/ToolbarTheme" />
+
+    <!-- Filter and Sort Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:weightSum="3">
+
+        <!-- Filter Button -->
+        <Button
+            android:id="@+id/filterButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FILTER"
+            android:background="@drawable/button_transparent_with_border"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:elevation="6dp"
+            android:textSize="14sp"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/sortButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SORT"
+            android:background="@drawable/button_transparent_with_border"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:elevation="6dp"
+            android:textSize="14sp"
+            android:layout_marginStart="8dp" />
+
+        <Button
+            android:id="@+id/favoritesButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FAVORITES"
+            android:background="@drawable/button_transparent_with_border"
+            android:textColor="@color/white"
+            android:padding="8dp"
+            android:elevation="6dp"
+            android:textSize="14sp"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- ListView for Search Results -->
+    <ListView
+        android:id="@+id/chargePointsListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/white"
+        android:background="#30FFFFFF" />
+</LinearLayout>

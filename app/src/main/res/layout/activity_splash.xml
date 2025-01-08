@@ -1,0 +1,30 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_maroon"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <!-- Welcome Message -->
+    <TextView
+        android:id="@+id/welcomeMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Welcome to ChargePointsMVC"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+    <!-- Created By Message -->
+    <TextView
+        android:id="@+id/createdByMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Created by Iqra Waseem"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        android:textStyle="italic" />
+</LinearLayout>

@@ -1,0 +1,38 @@
+<!-- list_item_delete_charge_point.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_maroon"
+        android:elevation="4dp"
+        android:title="Add Charge Point"
+        android:titleTextColor="@android:color/white"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:theme="@style/ToolbarTheme"
+        app:popupTheme="@style/ToolbarTheme" />
+
+    <TextView
+        android:id="@+id/referenceId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reference ID"
+        android:textSize="16sp"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/town"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Town"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray" />
+</LinearLayout>

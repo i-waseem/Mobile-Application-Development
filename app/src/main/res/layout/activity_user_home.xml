@@ -1,0 +1,83 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/dark_maroon"
+    android:gravity="center_horizontal"
+    android:padding="16dp">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_maroon"
+        android:elevation="4dp"
+        android:title="User Home"
+        android:titleTextColor="@android:color/white"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:theme="@style/ToolbarTheme"
+        app:popupTheme="@style/ToolbarTheme" />
+
+    <!-- Content Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|center_vertical"
+        android:paddingTop="24dp">
+
+        <!-- Search Charge Points Button -->
+        <Button
+            android:id="@+id/searchChargePointsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SEARCH CHARGE POINTS"
+            android:background="@drawable/button_transparent_with_border"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:elevation="6dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- View Charge Points Button -->
+        <Button
+            android:id="@+id/viewChargePointsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VIEW CHARGE POINTS"
+            android:background="@drawable/button_transparent_with_border"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:elevation="6dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- View Map Button -->
+        <Button
+            android:id="@+id/viewMapButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VIEW MAP"
+            android:background="@drawable/button_transparent_with_border"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:elevation="6dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Import Dataset Button -->
+        <Button
+            android:id="@+id/importDatasetButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="IMPORT DATASET"
+            android:background="@drawable/button_transparent_with_border"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:elevation="6dp"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+</LinearLayout>
